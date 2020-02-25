@@ -1,8 +1,8 @@
 ## Rotor-Dynamic-APDL
 转子动力学分析  主要使用APDL
 
-# 1 坎贝尔图分析
-# 2 使用非线性扰动对预应力结构的坎贝尔图分析
+[1 坎贝尔图分析](https://github.com/leslielee619/Rotor-Dynamic-APDL/tree/master/%E5%9D%8E%E8%B4%9D%E5%B0%94%E5%9B%BE%E5%88%86%E6%9E%90)
+[2 使用非线性扰动对预应力结构的坎贝尔图分析]()
 # 3 使用WorkBench进行模态分析
 # 4 使用振型叠加法对基础激励的谐响应分析
 # 5 使用振型叠加法对脉冲激励的瞬态响应分析
