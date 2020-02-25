@@ -1,0 +1,66 @@
+ 7.1. Example: Campbell Diagram Analysis
+
+参考资料：
+简单坎贝尔图分析 《高级分析指导》
+坎贝尔图和临界转速分析，使用对称轴承  《机械APDL验证手册247》
+坎贝尔图和临界转速分析，使用对称各向异性轴承  《机械APDL验证手册254》
+有粘性内阻尼的旋转梁  《机械APDL验证手册261》
+
+题目：对于一个盘的坎贝尔图分析
+
+盘的描述：
+薄盘，内圈固定，外圈自由，绕z轴转速120Hz
+厚度0.8mm  内径16.5mm 外径47.5mm
+E=7.2e+10N/m2     
+u=0.3 
+density=2800kg/m3
+
+pi = acos(-1)  
+ro = 47.5e-3  
+ri = 16.5  
+t = 0.8e-3
+w = 120*2*pi
+
+/prep7
+et,1,181  
+r,1,t  
+
+!材料 铝
+mp,ex,,7.2e+10
+mp,nuxy,,0.3
+mp,dens,,2800
+
+!划分网格
+esize,0.0025
+cyl4,,,xb,0,xa,360
+amesh,all
+
+!边界限制
+lsel,,,,5,8
+dl,all,1,all
+allsel
+fini
+
+!模态分析
+/solu
+antype,modal
+modopt,qrdamp,30,,,on
+qrdopt,on 
+mxpand,30
+coriolis,on,,,on  
+omega,,,0.1  
+solve
+omega,,,spin/2
+solve
+omega,,,spin
+solve
+finish
+
+!坎贝尔图
+/post1
+/yrange,500,1500
+/show,JPEG
+plcamp
+/show,CLOSE
+prcamp
+finish
